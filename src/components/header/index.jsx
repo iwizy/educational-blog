@@ -7,7 +7,7 @@ export default class Header extends Component {
 
   render() {
     return (
-      <Menu size='small'>
+      <Menu size='small' fixed='top'>
         <Menu.Item
           name='Главная'
           as={Link}
