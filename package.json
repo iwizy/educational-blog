@@ -45,5 +45,11 @@
     "webpack-cli": "^3.3.11",
     "webpack-config": "^7.5.0",
     "webpack-dev-server": "^3.10.3"
-  }
+  },
+  "browserslist": [
+    "defaults",
+    "not IE 11",
+    "not IE_Mob 11",
+    "maintained node versions"
+  ]
 }
