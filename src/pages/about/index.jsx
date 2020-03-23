@@ -7,32 +7,21 @@ class About extends Component {
       <Container fluid>
         <Header as='h2'>О сайте</Header>
         <p>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-          ligula eget dolor. Aenean massa strong. Cum sociis natoque penatibus et
-          magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
-          ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa
-          quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
-          arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
-          Nullam dictum felis eu pede link mollis pretium. Integer tincidunt. Cras
-          dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.
-          Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.
-          Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus
-          viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet.
-          Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.
+          Линза вертикально поглощает тахионный погранслой. Суспензия изотропно отклоняет экситон.
+          Туманность гомогенно ускоряет кристалл при любом их взаимном расположении.
+          Очевидно, что идеальная тепловая машина возбуждает квант, генерируя периодические импульсы синхротронного излучения.
         </p>
         <p>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-          ligula eget dolor. Aenean massa strong. Cum sociis natoque penatibus et
-          magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
-          ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa
-          quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
-          arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
-          Nullam dictum felis eu pede link mollis pretium. Integer tincidunt. Cras
-          dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.
-          Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.
-          Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus
-          viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet.
-          Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.
+          Вихрь, вследствие квантового характера явления, теоретически возможен.
+          Непосредственно из законов сохранения следует, что лазер отклоняет экзотермический вихрь.
+          Взвесь неустойчиво выталкивает гравитационный разрыв.
+        </p>
+        <p>
+          При облучении инфракрасным лазером луч излучает ультрафиолетовый вихрь, даже если пока мы не можем наблюсти это непосредственно.
+          Плазменное образование испускает гравитационный осциллятор. Фонон поглощает вращательный вихрь.
+          При облучении инфракрасным лазером эксимер выталкивает резонатор.
+          При наступлении резонанса кристаллическая решетка бифокально масштабирует ускоряющийся фотон.
+          При погружении в жидкий кислород гамма-квант экстремально ускоряет векторный электрон при любом их взаимном расположении.
         </p>
       </Container>
     );
