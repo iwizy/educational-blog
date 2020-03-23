@@ -7,16 +7,20 @@ import Main from 'src/pages/main';
 import About from 'src/pages/about';
 import * as Actions from './actions';
 
+import style from './style.css';
+
 class App extends Component {
   render() {
   return(
     <>
     <Header></Header>
+      <div className={style.contentWrapper}>
     <Switch>
       <Route path='/' exact={true} component={Main} />
       <Route path='/about' exact={true} component={About} />
     </Switch>
-    </>
+    </div>
+      </>
   );
 };
 }
