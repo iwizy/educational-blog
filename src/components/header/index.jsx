@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Dropdown, Menu } from 'semantic-ui-react';
+import { Button, Menu } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 
@@ -20,16 +20,19 @@ export default class Header extends Component {
         />
 
         <Menu.Menu position='right'>
-          <Dropdown item text='Language'>
-            <Dropdown.Menu>
-              <Dropdown.Item>English</Dropdown.Item>
-              <Dropdown.Item>Russian</Dropdown.Item>
-              <Dropdown.Item>Spanish</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-
           <Menu.Item>
-            <Button primary>Sign Up</Button>
+            <Button
+              primary
+              as={Link}
+              to='/sign-in'
+            >Войти</Button>
+          </Menu.Item>
+          <Menu.Item>
+            <Button
+              secondary
+              as={Link}
+              to='/sign-up'
+            >Регистрация</Button>
           </Menu.Item>
         </Menu.Menu>
       </Menu>
