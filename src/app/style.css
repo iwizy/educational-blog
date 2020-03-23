@@ -1,3 +1,7 @@
 .contentWrapper {
   padding: 24px;
 }
+
+.fieldWrapper {
+  margin-bottom: 16px;
+}

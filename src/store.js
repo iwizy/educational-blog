@@ -4,6 +4,7 @@ import { connectRouter, routerMiddleware } from 'connected-react-router';
 import thunk from 'redux-thunk';
 
 import applicationReducer from 'src/app/reducer';
+import signInReducer from 'src/pages/sign-in/reducer';
 import { history } from 'src/history';
 
 
@@ -16,6 +17,7 @@ const routerMiddle = routerMiddleware(history);
 const createRootReducer = (history) => combineReducers({
   router: connectRouter(history),
   applicationReducer: applicationReducer,
+  signIn: signInReducer,
 });
 
 const store = createStore(
