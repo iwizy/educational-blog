@@ -1,25 +1,22 @@
-import React, { Component } from 'react'
-import { Button, Dropdown, Menu } from 'semantic-ui-react'
+import React, { Component } from 'react';
+import { Button, Dropdown, Menu } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
-export default class MenuExampleSizeSmall extends Component {
-  state = { activeItem: 'messages' }
 
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+export default class Header extends Component {
 
   render() {
-    const { activeItem } = this.state
-
     return (
       <Menu size='small'>
         <Menu.Item
-          name='home'
-          active={activeItem === 'home'}
-          onClick={this.handleItemClick}
+          name='Главная'
+          as={Link}
+          to='/'
         />
         <Menu.Item
-          name='messagesqq'
-          active={activeItem === 'messages'}
-          onClick={this.handleItemClick}
+          name='О сайте'
+          as={Link}
+          to='/about'
         />
 
         <Menu.Menu position='right'>
