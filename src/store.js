@@ -5,6 +5,7 @@ import thunk from 'redux-thunk';
 
 import applicationReducer from 'src/app/reducer';
 import signInReducer from 'src/pages/sign-in/reducer';
+import signUpReducer from 'src/pages/sign-up/reducer';
 import { history } from 'src/history';
 
 
@@ -18,6 +19,7 @@ const createRootReducer = (history) => combineReducers({
   router: connectRouter(history),
   applicationReducer: applicationReducer,
   signIn: signInReducer,
+  signUp: signUpReducer,
 });
 
 const store = createStore(
