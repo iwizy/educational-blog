@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Segment } from 'semantic-ui-react';
+import {Helmet} from "react-helmet";
 
 import PropTypes from 'prop-types';
 import Input from 'src/components/input';
@@ -22,6 +23,10 @@ class SignIn extends Component {
 
   render() {
     return (
+      <>
+      <Helmet>
+        <title>Блог: Вход на сайт</title>
+      </Helmet>
       <Segment raised size='small'>
       <div>
           <div className={style.fieldWrapper}>
@@ -46,6 +51,7 @@ class SignIn extends Component {
         </div>
       </div>
       </Segment>
+        </>
     );
   }
 }

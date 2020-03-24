@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import { Container, Header } from 'semantic-ui-react';
+import {Helmet} from "react-helmet";
 
 class About extends Component {
   render() {
     return (
+      <>
+        <Helmet>
+          <title>Блог: О сайте</title>
+        </Helmet>
       <Container fluid>
         <Header as='h2'>О сайте</Header>
         <p>
@@ -24,6 +29,7 @@ class About extends Component {
           При погружении в жидкий кислород гамма-квант экстремально ускоряет векторный электрон при любом их взаимном расположении.
         </p>
       </Container>
+        </>
     );
   }
 }
