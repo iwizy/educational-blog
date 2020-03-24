@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import * as Actions from './actions';
 import Title from "src/components/title";
+import { Item } from 'semantic-ui-react'
 import style from './style.css';
 
 class Main extends Component {
@@ -15,18 +16,20 @@ class Main extends Component {
     return (
       <>
         <Title title='Блог: Главная страница' />
-        <div className={style.postList}>
+        <Item.Group divided>
           {posts.map(function (postItem) {
             return (
-              <div className={style.postWrapper} key={postItem.id}>
-                <div className={style.postTitle}>
-                  <Link to={`/post/${postItem.id}`}>{postItem.title}</Link>
-                </div>
-                <div className={style.postContent}>{postItem.content}</div>
-              </div>
+              <Item key={postItem.id}>
+                <Item.Content>
+                  <Item.Header as={Link} to={`/post/${postItem.id}`}>{postItem.title}</Item.Header>
+                  <Item.Description>
+                    {postItem.content}
+                  </Item.Description>
+                </Item.Content>
+              </Item>
             );
           })}
-        </div>
+        </Item.Group>
         </>
     );
   }
