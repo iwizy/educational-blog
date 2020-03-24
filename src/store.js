@@ -7,6 +7,7 @@ import applicationReducer from 'src/app/reducer';
 import signInReducer from 'src/pages/sign-in/reducer';
 import signUpReducer from 'src/pages/sign-up/reducer';
 import mainReducer from 'src/pages/main/reducer';
+import postReducer from 'src/pages/post/reducer';
 import { history } from 'src/history';
 
 
@@ -22,6 +23,7 @@ const createRootReducer = (history) => combineReducers({
   signIn: signInReducer,
   signUp: signUpReducer,
   main: mainReducer,
+  post: postReducer
 });
 
 const store = createStore(
