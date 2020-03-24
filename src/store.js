@@ -6,6 +6,7 @@ import thunk from 'redux-thunk';
 import applicationReducer from 'src/app/reducer';
 import signInReducer from 'src/pages/sign-in/reducer';
 import signUpReducer from 'src/pages/sign-up/reducer';
+import mainReducer from 'src/pages/main/reducer';
 import { history } from 'src/history';
 
 
@@ -20,6 +21,7 @@ const createRootReducer = (history) => combineReducers({
   applicationReducer: applicationReducer,
   signIn: signInReducer,
   signUp: signUpReducer,
+  main: mainReducer,
 });
 
 const store = createStore(
