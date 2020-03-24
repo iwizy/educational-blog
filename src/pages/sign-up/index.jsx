@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import Input from 'src/components/input';
 import Title from "src/components/title";
 import * as Actions from './actions';
+import style from 'src/app/style.css';
+import {Button} from "semantic-ui-react";
 
 class SignUp extends Component {
   static propTypes = {
@@ -22,67 +24,49 @@ class SignUp extends Component {
       <>
       <Title title='Блог: Регистрация' />
       <div>
-        <div>
-          <div>
-            login
-          </div>
-          <div>
+        <div className={style.fieldWrapper}>
             <Input
               id="login"
               value={this.props.dataForm.login}
               onChange={this.props.changeFieldAction}
+              placeholder='Логин'
             />
-          </div>
         </div>
-        <div>
-          <div>
-            first name
-          </div>
-          <div>
+        <div className={style.fieldWrapper}>
             <Input
               id="firstName"
               value={this.props.dataForm.firstName}
               onChange={this.props.changeFieldAction}
+              placeholder='Имя'
             />
-          </div>
         </div>
-        <div>
-          <div>
-            last name
-          </div>
-          <div>
+        <div className={style.fieldWrapper}>
             <Input
               id="lastName"
               value={this.props.dataForm.lastName}
               onChange={this.props.changeFieldAction}
+              placeholder='Фамилия'
             />
-          </div>
         </div>
-        <div>
-          <div>
-            email
-          </div>
-          <div>
+        <div className={style.fieldWrapper}>
             <Input
               id="email"
               value={this.props.dataForm.email}
               onChange={this.props.changeFieldAction}
+              placeholder='Электронная почта'
             />
-          </div>
         </div>
-        <div>
-          <div>
-            password
-          </div>
-          <div>
+        <div className={style.fieldWrapper}>
             <Input
               id="password"
               value={this.props.dataForm.password}
               onChange={this.props.changeFieldAction}
+              placeholder='Пароль'
             />
-          </div>
         </div>
-        <button onClick={this.onSubmit}>Register</button>
+        <div>
+          <Button positive onClick={this.onSubmit}>Зарегистрироваться</Button>
+        </div>
       </div>
         </>
     );
