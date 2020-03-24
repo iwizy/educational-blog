@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Segment } from 'semantic-ui-react';
-import {Helmet} from "react-helmet";
 
 import PropTypes from 'prop-types';
 import Input from 'src/components/input';
+import Title from 'src/components/title';
 import * as Actions from './actions';
 
 import style from 'src/app/style.css';
@@ -24,9 +24,7 @@ class SignIn extends Component {
   render() {
     return (
       <>
-      <Helmet>
-        <title>Блог: Вход на сайт</title>
-      </Helmet>
+      <Title title='Блог: Войти на сайт' />
       <Segment raised size='small'>
       <div>
           <div className={style.fieldWrapper}>

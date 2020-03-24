@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import { Container, Header } from 'semantic-ui-react';
-import {Helmet} from "react-helmet";
+import Title from "src/components/title";
 
 class About extends Component {
   render() {
     return (
       <>
-        <Helmet>
-          <title>Блог: О сайте</title>
-        </Helmet>
+        <Title title='Блог: О сайте' />
       <Container fluid>
         <Header as='h2'>О сайте</Header>
         <p>
