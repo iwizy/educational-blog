@@ -13,6 +13,8 @@ class PostPage extends Component {
     const { data } = this.props;
 
     return (
+      <>
+
       <div>
         {data
           ? <div className={style.postWrapper}>
@@ -22,6 +24,7 @@ class PostPage extends Component {
           : <div>loading...</div>
         }
       </div>
+    </>
     )
   }
 }
