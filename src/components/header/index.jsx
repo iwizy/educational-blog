@@ -18,23 +18,41 @@ export default class Header extends Component {
           as={Link}
           to='/about'
         />
-
-        <Menu.Menu position='right'>
-          <Menu.Item>
-            <Button
-              primary
-              as={Link}
-              to='/sign-in'
-            >Войти</Button>
-          </Menu.Item>
-          <Menu.Item>
-            <Button
-              secondary
-              as={Link}
-              to='/sign-up'
-            >Регистрация</Button>
-          </Menu.Item>
-        </Menu.Menu>
+        {!this.props.user
+          ?
+          <Menu.Menu position='right'>
+            <Menu.Item>
+              <Button
+                primary
+                as={Link}
+                to='/sign-in'
+              >Войти</Button>
+            </Menu.Item>
+            <Menu.Item>
+              <Button
+                secondary
+                as={Link}
+                to='/sign-up'
+              >Регистрация</Button>
+            </Menu.Item>
+          </Menu.Menu>
+          :
+          <Menu.Menu position='right'>
+            <Menu.Item>
+              <Button
+                primary
+                as={Link}
+                to='/profile'
+              >{this.props.user.login}</Button>
+            </Menu.Item>
+            <Menu.Item>
+              <Button
+                secondary
+                onClick={this.props.signOut}
+              >Выход</Button>
+            </Menu.Item>
+          </Menu.Menu>
+        }
       </Menu>
     )
   }

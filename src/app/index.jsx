@@ -13,10 +13,14 @@ import * as Actions from './actions';
 import style from './style.css';
 
 class App extends Component {
+  componentDidMount() {
+    this.props.auth();
+  }
+
   render() {
   return(
     <>
-    <Header></Header>
+    <Header user={this.props.user} signOut={this.props.signOut} />
       <div className={style.contentWrapper}>
     <Switch>
       <Route path='/' exact={true} component={Main} />
