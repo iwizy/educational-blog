@@ -8,6 +8,7 @@ import About from 'src/pages/about';
 import SignIn from 'src/pages/sign-in';
 import SignUp from 'src/pages/sign-up';
 import Post from 'src/pages/post';
+import NewPost from "src/pages/new-post";
 import * as Actions from './actions';
 
 import style from './style.css';
@@ -28,6 +29,7 @@ class App extends Component {
       <Route path='/sign-in' exact={true} component={SignIn} />
       <Route path='/sign-up' exact={true} component={SignUp} />
       <Route path='/post/:id' exact={true} component={Post} />
+      <Route path='/new-post' exact={true} component={NewPost} />
     </Switch>
     </div>
       </>

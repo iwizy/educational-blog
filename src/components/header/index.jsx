@@ -35,9 +35,17 @@ export default class Header extends Component {
                 to='/sign-up'
               >Регистрация</Button>
             </Menu.Item>
+
           </Menu.Menu>
           :
           <Menu.Menu position='right'>
+            <Menu.Item>
+              <Button
+                secondary
+                as={Link}
+                to='/new-post'
+              >Создать пост</Button>
+            </Menu.Item>
             <Menu.Item>
               <Button
                 primary
