@@ -8,8 +8,33 @@ import style from './style.css';
 
 class Main extends Component {
   componentDidMount() {
-    this.props.getPostsAction();
-  }
+    this.props.getInitPostsAction();
+    window.addEventListener('scroll', this.onScroll);
+  };
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll);
+  };
+
+  onScroll = (e) => {
+    const { posts, isLoadingPosts } = this.props;
+    const postsLength = posts.length;
+    const windowRelativeBottom = document.documentElement.getBoundingClientRect().bottom;
+
+    if(windowRelativeBottom <= document.documentElement.clientHeight + 100 && !isLoadingPosts) {
+      this.props.getScrollPostsAction(postsLength)
+    }
+  };
+
+  onClickLike = (evt) => {
+    const { id } = evt.target;
+    this.props.increaseLikeCountAction(id);
+  };
+
+  onClickDislike = (evt) => {
+    const { id } = evt.target;
+    this.props.increaseDislikeCountAction(id);
+  };
 
   render() {
     const { posts } = this.props;
@@ -43,7 +68,8 @@ class Main extends Component {
 
 function mapStateToProps(state) {
   return {
-    posts: state.main.posts
+    posts: state.main.posts,
+    isLoadingPosts: state.main.isLoadingPosts
   };
 }
 
