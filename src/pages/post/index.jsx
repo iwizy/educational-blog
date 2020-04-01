@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as Actions from './actions';
+import { Dimmer, Loader } from 'semantic-ui-react';
 import style from './style.css';
 
 class PostPage extends Component {
   componentDidMount() {
     const { match } = this.props;
     this.props.getPostDataAction(match.params.id);
+  }
+
+  componentWillUnmount() {
+    this.props.leavingPostAction();
   }
 
   render() {
@@ -21,7 +26,10 @@ class PostPage extends Component {
             <div className={style.postTitle}>{data.title}</div>
             <div className={style.postContent}>{data.content}</div>
           </div>
-          : <div>loading...</div>
+          :
+          <Dimmer active>
+            <Loader>Загрузка</Loader>
+          </Dimmer>
         }
       </div>
     </>

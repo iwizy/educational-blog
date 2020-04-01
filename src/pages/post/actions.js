@@ -11,3 +11,9 @@ export const getPostDataAction = (id) => {
     }
   }
 };
+
+export const leavingPostAction = () => {
+  return function (dispatch) {
+    dispatch({type: 'POST_PAGE_LEAVING'});
+  }
+};

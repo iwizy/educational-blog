@@ -9,6 +9,11 @@ export default function postReducer(state = initState, action) {
         ...state,
         data: action.payload
       };
+    case 'POST_PAGE_LEAVING':
+      return {
+        ...state,
+        data: null
+      };
     default:
       return state;
   }
