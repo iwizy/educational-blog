@@ -28,7 +28,6 @@ class Main extends Component {
 
   onClickLike = (evt) => {
     const { id } = evt.target;
-    console.log('id: ',id);
     this.props.increaseLikeCountAction(id);
   };
 
