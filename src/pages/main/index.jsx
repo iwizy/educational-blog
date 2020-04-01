@@ -28,6 +28,7 @@ class Main extends Component {
 
   onClickLike = (evt) => {
     const { id } = evt.target;
+    console.log('id: ',id);
     this.props.increaseLikeCountAction(id);
   };
 
@@ -42,7 +43,7 @@ class Main extends Component {
       <>
         <Title title='Блог: Главная страница' />
         <Item.Group divided>
-          {posts.map(function (postItem) {
+          {posts.map((postItem) => {
             return (
               <Item key={postItem.id}>
                 <Item.Content>
@@ -53,8 +54,8 @@ class Main extends Component {
                   <Item.Extra>
                     <span className={style.extraItem}>Автор: {postItem.author.login}</span>
                     <span className={style.extraItem}><Icon color='green' name='eye' />{postItem.viewsCount}</span>
-                    <span className={style.extraItem}><Icon color='green' name='thumbs up outline' />{postItem.likesCount}</span>
-                    <span className={style.extraItem}><Icon color='red' name='thumbs down outline' />{postItem.dislikesCount}</span>
+                    <span onClick={this.onClickLike} className={style.extraItem}><Icon id={postItem.id} color='green' name='thumbs up outline' />{postItem.likesCount}</span>
+                    <span onClick={this.onClickDislike} className={style.extraItem}><Icon id={postItem.id} color='red' name='thumbs down outline' />{postItem.dislikesCount}</span>
                   </Item.Extra>
                 </Item.Content>
               </Item>

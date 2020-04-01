@@ -19,7 +19,13 @@ class SignUp extends Component {
     this.props.singUpAction(dataForm);
   };
 
+  checkLogin = () => {
+    const { checkLoginAction, dataForm } = this.props;
+    checkLoginAction(dataForm.login);
+  };
+
   render() {
+    const { errors } = this.props;
     return (
       <>
         <Title title='Блог: Регистрация'/>
@@ -31,6 +37,8 @@ class SignUp extends Component {
                 value={this.props.dataForm.login}
                 onChange={this.props.changeFieldAction}
                 placeholder='Логин'
+                onBlur={this.checkLogin}
+                error={errors.login}
               />
             </div>
             <div className={style.fieldWrapper}>
@@ -39,6 +47,7 @@ class SignUp extends Component {
                 value={this.props.dataForm.firstName}
                 onChange={this.props.changeFieldAction}
                 placeholder='Имя'
+                error={errors.firstName}
               />
             </div>
             <div className={style.fieldWrapper}>
@@ -47,6 +56,7 @@ class SignUp extends Component {
                 value={this.props.dataForm.lastName}
                 onChange={this.props.changeFieldAction}
                 placeholder='Фамилия'
+                error={errors.lastName}
               />
             </div>
             <div className={style.fieldWrapper}>
@@ -55,6 +65,7 @@ class SignUp extends Component {
                 value={this.props.dataForm.email}
                 onChange={this.props.changeFieldAction}
                 placeholder='Электронная почта'
+                error={errors.email}
               />
             </div>
             <div className={style.fieldWrapper}>
@@ -64,6 +75,7 @@ class SignUp extends Component {
                 onChange={this.props.changeFieldAction}
                 placeholder='Пароль'
                 type='password'
+                error={errors.password}
               />
             </div>
             <div>
@@ -77,7 +89,8 @@ class SignUp extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  dataForm: state.signUp.dataForm
+  dataForm: state.signUp.dataForm,
+  errors: state.signUp.errors
 });
 
 export default connect(mapStateToProps, Actions)(SignUp);

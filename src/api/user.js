@@ -29,3 +29,13 @@ export function signOut() {
     method: 'GET'
   });
 }
+
+export function checkLogin(login) {
+  return axiosFetch({
+    url: 'users/check-exists/',
+    method: 'POST',
+    data: {
+      login: login
+    }
+  });
+}
