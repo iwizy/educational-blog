@@ -6,7 +6,7 @@ import Title from 'src/components/title';
 class Profile extends Component {
   componentDidMount() {
     const {user} = this.props;
-    this.props.getPostDataAction(user.id);
+    this.props.getUserDataAction(user.id);
   }
 
   render() {
