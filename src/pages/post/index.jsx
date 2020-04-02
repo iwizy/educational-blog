@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import * as Actions from './actions';
 import { Dimmer, Loader } from 'semantic-ui-react';
 import style from './style.css';
+import Title from "src/components/title";
 
 class PostPage extends Component {
   componentDidMount() {
@@ -17,19 +18,19 @@ class PostPage extends Component {
   render() {
     const { data } = this.props;
 
-    return (
+    return data && (
       <>
-
-      <div>
-        {data
-          ? <div className={style.postWrapper}>
-            <div className={style.postTitle}>{data.title}</div>
-            <div className={style.postContent}>{data.content}</div>
-          </div>
-          :
-          <Dimmer active>
-            <Loader>Загрузка</Loader>
-          </Dimmer>
+        <Title title={`Блог: ${data.title}`}/>
+        <div>
+          {data
+            ? <div className={style.postWrapper}>
+              <div className={style.postTitle}>{data.title}</div>
+              <div className={style.postContent}>{data.content}</div>
+            </div>
+            :
+            <Dimmer active>
+              <Loader>Загрузка</Loader>
+            </Dimmer>
         }
       </div>
     </>
