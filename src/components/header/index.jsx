@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import { Button, Menu } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
-
 export default class Header extends Component {
 
   render() {
     return (
-      <Menu size='small' fixed='top'>
+      <Menu size='large'>
         <Menu.Item
           name='Главная'
           as={Link}
