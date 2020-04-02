@@ -11,11 +11,11 @@ class Profile extends Component {
 
   render() {
     const {data} = this.props;
-    return (
+    return data && (
       <>
-        <Title title='Блог: профиль'/>
+        <Title title={`Профиль ${data.login}`}/>
         <div>
-          Профиль:
+          Профиль: {data.login}
         </div>
       </>
     );
