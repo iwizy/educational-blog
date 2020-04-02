@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Switch, Route} from 'react-router-dom';
+import {Grid} from 'semantic-ui-react';
 
 import Header from 'src/components/header';
 import Main from 'src/pages/main';
@@ -22,18 +23,30 @@ class App extends Component {
   render() {
   return(
     <>
-    <Header user={this.props.user} signOut={this.props.signOut} />
-      <div className={style.contentWrapper}>
-    <Switch>
-      <Route path='/' exact={true} component={Main} />
-      <Route path='/about' exact={true} component={About} />
-      <Route path='/sign-in' exact={true} component={SignIn} />
-      <Route path='/sign-up' exact={true} component={SignUp} />
-      <Route path='/post/:id' exact={true} component={Post} />
-      <Route path='/new-post' exact={true} component={NewPost}/>
-      <Route path='/user-page/:id' exact={true} component={Profile}/>
-    </Switch>
-    </div>
+      <Grid>
+        <Grid.Row>
+          <Grid.Column width={3}></Grid.Column>
+          <Grid.Column width={10}><Header user={this.props.user} signOut={this.props.signOut}/></Grid.Column>
+          <Grid.Column width={3}></Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column width={3}></Grid.Column>
+          <Grid.Column width={10}>
+            <div className={style.contentWrapper}>
+              <Switch>
+                <Route path='/' exact={true} component={Main}/>
+                <Route path='/about' exact={true} component={About}/>
+                <Route path='/sign-in' exact={true} component={SignIn}/>
+                <Route path='/sign-up' exact={true} component={SignUp}/>
+                <Route path='/post/:id' exact={true} component={Post}/>
+                <Route path='/new-post' exact={true} component={NewPost}/>
+                <Route path='/user-page/:id' exact={true} component={Profile}/>
+              </Switch>
+            </div>
+          </Grid.Column>
+          <Grid.Column width={3}></Grid.Column>
+        </Grid.Row>
+      </Grid>
       </>
   );
 };
