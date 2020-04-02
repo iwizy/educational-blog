@@ -31,7 +31,7 @@ class App extends Component {
       <Route path='/sign-up' exact={true} component={SignUp} />
       <Route path='/post/:id' exact={true} component={Post} />
       <Route path='/new-post' exact={true} component={NewPost}/>
-      <Route path='/user-page' exact={true} component={Profile}/>
+      <Route path='/user-page/:id' exact={true} component={Profile}/>
     </Switch>
     </div>
       </>

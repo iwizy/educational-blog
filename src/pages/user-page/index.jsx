@@ -5,12 +5,12 @@ import Title from 'src/components/title';
 
 class Profile extends Component {
   componentDidMount() {
-    const {user} = this.props;
-    this.props.getUserDataAction(user.id);
+    const {match} = this.props;
+    this.props.getUserDataAction(match.params.id);
   }
 
   render() {
-    const {profile} = this.props;
+    const {data} = this.props;
     return (
       <>
         <Title title='Блог: профиль'/>
