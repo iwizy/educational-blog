@@ -50,7 +50,7 @@ export default class Header extends Component {
               <Button
                 primary
                 as={Link}
-                to='/profile'
+                to='/user-page'
               >{this.props.user.login}</Button>
             </Menu.Item>
             <Menu.Item>
