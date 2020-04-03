@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Button, Segment } from 'semantic-ui-react';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {Button, Segment, Form} from 'semantic-ui-react';
 
 import PropTypes from 'prop-types';
 import Input from 'src/components/input';
@@ -17,39 +17,41 @@ class SignIn extends Component {
   };
 
   onSubmit = () => {
-    const { dataForm } = this.props;
+    const {dataForm} = this.props;
     this.props.singInAction(dataForm);
   };
 
   render() {
     return (
       <>
-      <Title title='Блог: Войти на сайт' />
-      <Segment raised size='small'>
-      <div>
-          <div className={style.fieldWrapper}>
-            <Input
-              id="login"
-              value={this.props.dataForm.login}
-              onChange={this.props.changeFieldAction}
-              placeholder='Логин'
-            />
-          </div>
-        <div className={style.fieldWrapper}>
-            <Input
-              id="password"
-              value={this.props.dataForm.password}
-              onChange={this.props.changeFieldAction}
-              placeholder='Пароль'
-              type='password'
-            />
-        </div>
-        <div>
-          <Button positive onClick={this.onSubmit}>Войти</Button>
-        </div>
-      </div>
-      </Segment>
-        </>
+        <Title title='Блог: Войти на сайт'/>
+        <Segment raised size='small'>
+          <Form>
+            <div>
+              <div className={style.fieldWrapper}>
+                <Input
+                  id="login"
+                  value={this.props.dataForm.login}
+                  onChange={this.props.changeFieldAction}
+                  placeholder='Логин'
+                />
+              </div>
+              <div className={style.fieldWrapper}>
+                <Input
+                  id="password"
+                  value={this.props.dataForm.password}
+                  onChange={this.props.changeFieldAction}
+                  placeholder='Пароль'
+                  type='password'
+                />
+              </div>
+              <div>
+                <Button positive onClick={this.onSubmit}>Войти</Button>
+              </div>
+            </div>
+          </Form>
+        </Segment>
+      </>
     );
   }
 }
