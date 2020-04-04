@@ -46,3 +46,10 @@ export function getUserData(id) {
     method: 'GET'
   });
 }
+
+export function changeUserPassword(data) {
+  return axiosFetch({
+    url: 'users/change/password/',
+    method: 'PUT'
+  });
+}
