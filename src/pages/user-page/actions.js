@@ -11,3 +11,24 @@ export const getUserDataAction = (id) => {
     }
   }
 };
+
+export const showPasswordModalAction = () => {
+  return function (dispatch) {
+    try {
+      dispatch({type: 'USER_PAGE_CHANGE_PASS_MODAL'});
+    } catch (error) {
+    }
+  }
+};
+
+export const changeUserPasswordAction = (data) => {
+  return async function (dispatch) {
+    try {
+      dispatch({type: 'USER_PAGE_CHANGE_PASS_REQUEST'});
+      const response = await API.user.changeUserPassword(data);
+      dispatch({type: 'USER_PAGE_CHANGE_PASS_SUCCESS', payload: response.data});
+    } catch (error) {
+      dispatch({type: 'USER_PAGE_CHANGE_PASS_FAIL'});
+    }
+  }
+};

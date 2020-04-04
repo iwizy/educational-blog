@@ -3,7 +3,9 @@ import {connect} from 'react-redux';
 import * as Actions from './actions';
 import Title from 'src/components/title';
 import { Card, Icon, Image } from 'semantic-ui-react';
+import Modal from 'src/components/modal';
 import style from './style.css';
+import Input from "src/components/input";
 
 class Profile extends Component {
   componentDidMount() {
@@ -12,14 +14,17 @@ class Profile extends Component {
   }
 
   changePassword = () => {
-    console.log('change pass');
+    this.props.showPasswordModalAction();
   };
 
 
   render() {
-    const {data} = this.props;
+    const { data, passwordModalShow } = this.props;
+     console.log('props: ', this.props);
+
     let signDate = data && data.registrationDate;
     let newDate = data && signDate.slice(0,10).split('-').reverse().join('.'); // да знаю, что не изящно ни разу...
+
     return data && (
       <>
         <Title title={`Профиль ${data.login}`}/>
@@ -54,6 +59,28 @@ class Profile extends Component {
             </Card.Content>
           </Card>
         </div>
+        {
+          passwordModalShow && <Modal
+            content={
+              <div>
+                <Input
+                  id="password"
+                  value={this.props.dataForm.password}
+                  onChange={this.props.changeFieldAction}
+                  placeholder='Текущий пароль'
+                  type='password'
+                />
+                <Input
+                  id="password"
+                  value={this.props.dataForm.password}
+                  onChange={this.props.changeFieldAction}
+                  placeholder='Новый пароль'
+                  type='password'
+                />
+              </div>
+            }
+          />
+        }
       </>
     );
   }
@@ -61,7 +88,8 @@ class Profile extends Component {
 
 function mapStateToProps(state) {
   return {
-    data: state.profile.data
+    data: state.profile.data,
+    passwordModalShow: state.profile.passwordModalShow
   };
 }
 
