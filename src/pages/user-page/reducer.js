@@ -1,5 +1,6 @@
 const initState = {
-  data: null
+  data: null,
+  passwordModalShow: false
 };
 
 export default function profileReducer(state = initState, action) {
