@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import * as Actions from './actions';
 import Title from 'src/components/title';
-import { Card, Icon, Image, Grid} from 'semantic-ui-react';
+import { Card, Icon, Image } from 'semantic-ui-react';
 import style from './style.css';
 
 class Profile extends Component {
@@ -10,6 +10,11 @@ class Profile extends Component {
     const {match} = this.props;
     this.props.getUserDataAction(match.params.id);
   }
+
+  changePassword = () => {
+    console.log('change pass');
+  };
+
 
   render() {
     const {data} = this.props;
@@ -28,7 +33,8 @@ class Profile extends Component {
               <Card.Header>{data.firstName} {data.lastName} ({data.login})</Card.Header>
               <Card.Meta>С нами с {newDate}</Card.Meta>
               <Card.Description>
-                E-mail: <a href={`mailto:${data.email}`}>{data.email}</a>
+                <div><Icon name='envelope outline' /> <a href={`mailto:${data.email}`}>{data.email}</a></div>
+                <div><Icon name='key' /> <a onClick={this.changePassword}>изменить пароль</a></div>
 
               </Card.Description>
             </Card.Content>
