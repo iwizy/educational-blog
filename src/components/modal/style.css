@@ -12,4 +12,10 @@
 .modal {
   background: white;
   margin: 100px auto;
+  border: 1px solid rgb(212,212,212);
+  border-radius: 4px;
+}
+
+.modalWrapper {
+  padding: 18px;
 }

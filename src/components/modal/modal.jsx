@@ -6,12 +6,11 @@ class Modal extends Component {
     return (
       <div className={style.wrapper}>
         <div className={style.modal}>
-          <div>
+          <div className={style.modalWrapper}>
             {
               this.props.content
             }
           </div>
-          <button onClick={this.props.closeModal}>Close</button>
         </div>
       </div>
     );
