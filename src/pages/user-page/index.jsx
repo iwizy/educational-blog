@@ -63,20 +63,7 @@ class Profile extends Component {
           passwordModalShow && <Modal
             content={
               <div>
-                <Input
-                  id="password"
-                  value={this.props.dataForm.password}
-                  onChange={this.props.changeFieldAction}
-                  placeholder='Текущий пароль'
-                  type='password'
-                />
-                <Input
-                  id="password"
-                  value={this.props.dataForm.password}
-                  onChange={this.props.changeFieldAction}
-                  placeholder='Новый пароль'
-                  type='password'
-                />
+               www
               </div>
             }
           />
@@ -84,6 +71,7 @@ class Profile extends Component {
       </>
     );
   }
+
 }
 
 function mapStateToProps(state) {

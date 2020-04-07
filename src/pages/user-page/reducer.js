@@ -14,13 +14,13 @@ export default function profileReducer(state = initState, action) {
       return {
         ...state,
         data: action.payload,
-        passwordModalShow: !this.passwordModalShow
+        passwordModalShow: !state.passwordModalShow
       };
     case 'USER_PAGE_CHANGE_PASS_MODAL':
       return {
         ...state,
         data: action.payload,
-        passwordModalShow: !this.passwordModalShow
+        passwordModalShow: !state.passwordModalShow
       };
     default:
       return state;
