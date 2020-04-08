@@ -47,9 +47,13 @@ export function getUserData(id) {
   });
 }
 
-export function changeUserPassword(data) {
+export function changeUserPassword(dataForm) {
   return axiosFetch({
     url: 'users/change/password/',
-    method: 'PUT'
+    method: 'PUT',
+    dataForm: {
+      currentPassword: dataForm.currentPassword,
+      newPassword: dataForm.newPassword
+    }
   });
 }

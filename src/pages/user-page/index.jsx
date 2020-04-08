@@ -17,6 +17,16 @@ class Profile extends Component {
     this.props.showPasswordModalAction();
   };
 
+  onCloseClick = () => {
+    this.props.closePasswordModalAction();
+  };
+
+  onChangePasswordClick = () => {
+    const {dataForm} = this.props;
+    this.props.changeUserPasswordAction(dataForm);
+    console.log('dataForm', dataForm);
+  };
+
 
   render() {
     const { data, passwordModalShow } = this.props;
@@ -63,7 +73,22 @@ class Profile extends Component {
           passwordModalShow && <Modal
             content={
               <div>
-               www
+                <Input
+                  id="currentPassword"
+                  value={this.props.dataForm.currentPassword}
+                  onChange={this.props.changeFieldAction}
+                  placeholder='Текущий пароль'
+                  type='password'
+                />
+                <Input
+                  id="newPassword"
+                  value={this.props.dataForm.newPassword}
+                  onChange={this.props.changeFieldAction}
+                  placeholder='Новый пароль'
+                  type='password'
+                />
+                <button onClick={this.onCloseClick}>Закрыть</button>
+                <button onClick={this.onChangePasswordClick}>Изменить пароль</button>
               </div>
             }
           />
@@ -71,12 +96,12 @@ class Profile extends Component {
       </>
     );
   }
-
 }
 
 function mapStateToProps(state) {
   return {
     data: state.profile.data,
+    dataForm: state.profile.dataForm,
     passwordModalShow: state.profile.passwordModalShow
   };
 }
