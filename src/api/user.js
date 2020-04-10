@@ -51,9 +51,6 @@ export function changeUserPassword(dataForm) {
   return axiosFetch({
     url: 'users/change/password/',
     method: 'PUT',
-    dataForm: {
-      currentPassword: dataForm.currentPassword,
-      newPassword: dataForm.newPassword
-    }
+    data: dataForm
   });
 }
