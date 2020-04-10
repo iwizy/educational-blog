@@ -15,7 +15,7 @@ import style from './style.css';
    };
 
    render() {
-     const { value, placeholder, type, error } = this.props;
+     const { value, placeholder, type, error, icon, iconPosition, fluid } = this.props;
 
      return (
        <>
@@ -26,6 +26,9 @@ import style from './style.css';
          type={type}
          onBlur={this.onBlur}
          error={error}
+         icon={icon}
+         iconPosition={iconPosition}
+         fluid={fluid}
        />
        <div className={style.errorHint}>{error}</div>
        </>
