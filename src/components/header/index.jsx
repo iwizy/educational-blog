@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import { Button, Menu } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
+import style from './style.css';
+
 export default class Header extends Component {
 
   render() {
     return (
-      <Menu size='large'>
+      <Menu size='large' fixed='top'>
+        <div className={style.mainmenu}>
         <Menu.Item
           name='Главная'
           as={Link}
@@ -60,6 +63,7 @@ export default class Header extends Component {
             </Menu.Item>
           </Menu.Menu>
         }
+        </div>
       </Menu>
     )
   }
