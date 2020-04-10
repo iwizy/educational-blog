@@ -10,7 +10,6 @@ import SignUp from 'src/pages/sign-up';
 import Post from 'src/pages/post';
 import NewPost from 'src/pages/new-post';
 import Profile from 'src/pages/user-page';
-import TestPage from 'src/pages/test-page';
 import * as Actions from './actions';
 
 import style from './style.css';
@@ -33,7 +32,6 @@ class App extends Component {
             <Route path='/post/:id' exact={true} component={Post}/>
             {this.props.user && <Route path='/new-post' exact={true} component={NewPost}/>}
             <Route path='/user-page/:id' exact={true} component={Profile}/>
-            <Route path='/test-page' exact={true} component={TestPage}/>
           </Switch>
         </div>
       </>
