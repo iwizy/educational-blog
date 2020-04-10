@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import * as Actions from './actions';
 import Title from "src/components/title";
-import {Item, Icon, Grid} from 'semantic-ui-react'
+import {Item, Icon, Header} from 'semantic-ui-react'
 import style from './style.css';
 
 class Main extends Component {
@@ -41,6 +41,7 @@ class Main extends Component {
     return (
       <>
         <Title title='Блог: Главная страница'/>
+        <Header as='h2'>Последние записи</Header>
         <Item.Group divided>
           {posts.map((postItem) => {
             return (
