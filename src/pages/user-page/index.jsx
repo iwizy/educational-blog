@@ -6,6 +6,7 @@ import {Card, Icon, Image, Grid, Form, Segment, Button} from 'semantic-ui-react'
 import Modal from 'src/components/modal';
 import style from './style.css';
 import Input from "src/components/input";
+import Info from 'src/components/notify';
 
 class Profile extends Component {
   componentDidMount() {
@@ -29,7 +30,7 @@ class Profile extends Component {
 
 
   render() {
-    const {data, passwordModalShow} = this.props;
+    const {data, passwordModalShow, message} = this.props;
     console.log('props: ', this.props);
 
     let signDate = data && data.registrationDate;
@@ -38,6 +39,12 @@ class Profile extends Component {
     return data && (
       <>
         <Title title={`Профиль ${data.login}`}/>
+        <Info
+          header={this.props.message.header}
+          content={this.props.message.content}
+          hidden={this.props.message.isHidden}
+          color={this.props.message.color}
+        />
         <div>
           <Card>
             <Image
@@ -118,7 +125,8 @@ function mapStateToProps(state) {
   return {
     data: state.profile.data,
     dataForm: state.profile.dataForm,
-    passwordModalShow: state.profile.passwordModalShow
+    passwordModalShow: state.profile.passwordModalShow,
+    message: state.profile.message
   };
 }
 
