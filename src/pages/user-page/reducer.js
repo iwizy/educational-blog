@@ -6,7 +6,12 @@ const initState = {
     currentPassword: '',
     newPassword: ''
   },
-  passwordModalShow: false
+  passwordModalShow: false,
+  message: {
+    header: '',
+    content: '',
+    isHidden: true
+  }
 };
 
 function merge(state, someObject) {
@@ -31,12 +36,27 @@ export default function profileReducer(state = initState, action) {
     case 'USER_PAGE_CHANGE_PASS_SUCCESS':
       return {
         ...state,
-        passwordModalShow: !state.passwordModalShow
+        passwordModalShow: !state.passwordModalShow,
+        message: {
+          header: 'Изменение пароля',
+          content: 'Вы успешно изменили пароль',
+          color: 'green',
+          isHidden: false
+        }
       };
     case 'USER_PAGE_CHANGE_PASS_MODAL':
       return {
         ...state,
         passwordModalShow: !state.passwordModalShow
+      };
+    case 'USER_PAGE_CHANGE_PASS_MESSAGE_HIDE':
+      return {
+        ...state,
+        message: {
+          header: '',
+          content: '',
+          isHidden: true
+        }
       };
     case 'USER_PAGE_CHANGE_PASS_MODAL_CLOSE':
       return {

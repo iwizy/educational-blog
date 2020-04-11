@@ -41,6 +41,10 @@ export const changeUserPasswordAction = (dataForm) => {
       dispatch({type: 'USER_PAGE_CHANGE_PASS_REQUEST'});
       const response = await API.user.changeUserPassword(dataForm);
       dispatch({type: 'USER_PAGE_CHANGE_PASS_SUCCESS', payload: response.data});
+      setTimeout(() => {
+          dispatch({type: 'USER_PAGE_CHANGE_PASS_MESSAGE_HIDE'});
+        }
+        ,5000);
     } catch (error) {
       dispatch({type: 'USER_PAGE_CHANGE_PASS_FAIL'});
     }
