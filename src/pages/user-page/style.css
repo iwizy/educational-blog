@@ -2,3 +2,7 @@
   display: flex;
   justify-content: space-between;
 }
+
+.fieldWrapper {
+  margin-bottom: 16px;
+}

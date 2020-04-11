@@ -31,7 +31,6 @@ export default function profileReducer(state = initState, action) {
     case 'USER_PAGE_CHANGE_PASS_SUCCESS':
       return {
         ...state,
-        data: action.payload,
         passwordModalShow: !state.passwordModalShow
       };
     case 'USER_PAGE_CHANGE_PASS_MODAL':
