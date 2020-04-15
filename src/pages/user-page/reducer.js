@@ -44,6 +44,17 @@ export default function profileReducer(state = initState, action) {
           isHidden: false
         }
       };
+    case 'USER_PAGE_CHANGE_PASS_CURRENT_PASS_WRONG':
+      return {
+        ...state,
+        passwordModalShow: !state.passwordModalShow,
+        message: {
+          header: 'Изменение пароля',
+          content: 'Вы неверно указали текущий пароль',
+          color: 'red',
+          isHidden: false
+        }
+      };
     case 'USER_PAGE_CHANGE_PASS_MODAL':
       return {
         ...state,
