@@ -25,14 +25,11 @@ class Profile extends Component {
   onChangePasswordClick = () => {
     const {dataForm} = this.props;
     this.props.changeUserPasswordAction(dataForm);
-    console.log('dataForm', dataForm);
   };
 
 
   render() {
     const {data, passwordModalShow, message} = this.props;
-    console.log('props: ', this.props);
-
     let signDate = data && data.registrationDate;
     let newDate = data && signDate.slice(0, 10).split('-').reverse().join('.'); // да знаю, что не изящно ни разу...
 
@@ -40,10 +37,10 @@ class Profile extends Component {
       <>
         <Title title={`Профиль ${data.login}`}/>
         <Info
-          header={this.props.message.header}
-          content={this.props.message.content}
-          hidden={this.props.message.isHidden}
-          color={this.props.message.color}
+          header={this.props.main.message.header}
+          content={this.props.main.message.content}
+          hidden={this.props.main.message.isHidden}
+          color={this.props.main.message.color}
         />
         <div>
           <Card>
