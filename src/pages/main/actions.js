@@ -31,7 +31,11 @@ export const increaseLikeCountAction = (id) => {
       const response = await API.posts.increasePostLike(id);
       dispatch({ type: 'MAIN_PAGE_INCREASE_LIKE_SUCCESS', payload: response.data })
     } catch(error) {
-      dispatch({ type: 'MAIN_PAGE_INCREASE_LIKE_FAIL' });
+      dispatch({type: 'MAIN_PAGE_INCREASE_LIKE_FAIL'});
+      setTimeout(() => {
+          dispatch({type: 'MAIN_PAGE_MESSAGE_HIDE'});
+        }, 5000
+      );
     }
   }
 };
@@ -43,7 +47,11 @@ export const increaseDislikeCountAction = (id) => {
       const response = await API.posts.increasePostDislike(id);
       dispatch({ type: 'MAIN_PAGE_INCREASE_DISLIKE_SUCCESS', payload: response.data })
     } catch(error) {
-      dispatch({ type: 'MAIN_PAGE_INCREASE_DISLIKE_FAIL' });
+      dispatch({type: 'MAIN_PAGE_INCREASE_DISLIKE_FAIL'});
+      setTimeout(() => {
+          dispatch({type: 'MAIN_PAGE_MESSAGE_HIDE'});
+        }, 5000
+      );
     }
   }
 };

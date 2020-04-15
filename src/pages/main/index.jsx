@@ -3,7 +3,8 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import * as Actions from './actions';
 import Title from "src/components/title";
-import {Item, Icon, Header, Dimmer, Loader} from 'semantic-ui-react'
+import {Item, Icon, Header, Dimmer, Loader} from 'semantic-ui-react';
+import Info from 'src/components/notify';
 import style from './style.css';
 
 class Main extends Component {
@@ -37,10 +38,16 @@ class Main extends Component {
   };
 
   render() {
-    const {posts} = this.props;
+    const {posts, message} = this.props;
     return (
       <>
         <Title title='Блог: Главная страница'/>
+        <Info
+          header={this.props.message.header}
+          content={this.props.message.content}
+          hidden={this.props.message.isHidden}
+          color={this.props.message.color}
+        />
         <Header as='h2'>Последние записи</Header>
         {posts
           ? <Item.Group divided>
@@ -80,7 +87,8 @@ class Main extends Component {
 function mapStateToProps(state) {
   return {
     posts: state.main.posts,
-    isLoadingPosts: state.main.isLoadingPosts
+    isLoadingPosts: state.main.isLoadingPosts,
+    message: state.main.message
   };
 }
 
