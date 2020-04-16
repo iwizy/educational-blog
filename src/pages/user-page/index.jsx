@@ -7,6 +7,7 @@ import Modal from 'src/components/modal';
 import style from './style.css';
 import Input from "src/components/input";
 import Info from 'src/components/notify';
+import Moment from 'react-moment';
 
 class Profile extends Component {
   componentDidMount() {
@@ -30,17 +31,15 @@ class Profile extends Component {
 
   render() {
     const {data, passwordModalShow, message} = this.props;
-    let signDate = data && data.registrationDate;
-    let newDate = data && signDate.slice(0, 10).split('-').reverse().join('.'); // да знаю, что не изящно ни разу...
 
     return data && (
       <>
         <Title title={`Профиль ${data.login}`}/>
         <Info
-          header={this.props.main.message.header}
-          content={this.props.main.message.content}
-          hidden={this.props.main.message.isHidden}
-          color={this.props.main.message.color}
+          header={this.props.message.header}
+          content={this.props.message.content}
+          hidden={this.props.message.isHidden}
+          color={this.props.message.color}
         />
         <div>
           <Card>
@@ -50,7 +49,7 @@ class Profile extends Component {
             />
             <Card.Content>
               <Card.Header>{data.firstName} {data.lastName} ({data.login})</Card.Header>
-              <Card.Meta>С нами с {newDate}</Card.Meta>
+              <Card.Meta>С нами с <Moment date={data.date} format='DD.MM.YYYY'></Moment></Card.Meta>
               <Card.Description>
                 <div><Icon name='envelope outline'/> <a href={`mailto:${data.email}`}>{data.email}</a></div>
                 <div><Icon name='key'/> <a onClick={this.changePassword}>изменить пароль</a></div>
