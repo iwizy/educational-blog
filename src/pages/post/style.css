@@ -1,5 +1,5 @@
 .postWrapper {
-  margin: 0 auto;
+  margin: 0 auto 24px;
 }
 
 .postTitle {
@@ -9,4 +9,8 @@
 
 .postContent {
   margin-top: 10px;
+}
+
+.postData {
+  margin-top: 24px;
 }
