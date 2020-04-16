@@ -2,17 +2,19 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import * as Actions from './actions';
 import Title from 'src/components/title';
-import {Card, Icon, Image, Grid, Form, Segment, Button} from 'semantic-ui-react';
+import {Card, Icon, Image, Grid, Form, Segment, Button, Item} from 'semantic-ui-react';
 import Modal from 'src/components/modal';
 import style from './style.css';
 import Input from "src/components/input";
 import Info from 'src/components/notify';
 import Moment from 'react-moment';
+import {Link} from "react-router-dom";
 
 class Profile extends Component {
   componentDidMount() {
     const {match} = this.props;
     this.props.getUserDataAction(match.params.id);
+    this.props.getPostsAction(match.params.id);
   }
 
   changePassword = () => {
@@ -30,7 +32,7 @@ class Profile extends Component {
 
 
   render() {
-    const {data, passwordModalShow, message} = this.props;
+    const {data, passwordModalShow, message, posts} = this.props;
 
     return data && (
       <>
@@ -41,17 +43,18 @@ class Profile extends Component {
           hidden={this.props.message.isHidden}
           color={this.props.message.color}
         />
-        <div>
-          <Card>
-            <Image
-              src={`http://school-blog.ru/images/${data.avatar}`}
-              wrapped ui={false}
-            />
-            <Card.Content>
-              <Card.Header>{data.firstName} {data.lastName} ({data.login})</Card.Header>
-              <Card.Meta>С нами с <Moment date={data.date} format='DD.MM.YYYY'></Moment></Card.Meta>
-              <Card.Description>
-                <div><Icon name='envelope outline'/> <a href={`mailto:${data.email}`}>{data.email}</a></div>
+        <Grid>
+          <Grid.Column width={5}>
+            <Card>
+              <Image
+                src={`http://school-blog.ru/images/${data.avatar}`}
+                wrapped ui={false}
+              />
+              <Card.Content>
+                <Card.Header>{data.firstName} {data.lastName} ({data.login})</Card.Header>
+                <Card.Meta>С нами с <Moment date={data.date} format='DD.MM.YYYY'></Moment></Card.Meta>
+                <Card.Description>
+                  <div><Icon name='envelope outline'/> <a href={`mailto:${data.email}`}>{data.email}</a></div>
                 <div><Icon name='key'/> <a onClick={this.changePassword}>изменить пароль</a></div>
 
               </Card.Description>
@@ -70,8 +73,41 @@ class Profile extends Component {
                 {data.dislikesCount}
               </a>
             </Card.Content>
-          </Card>
-        </div>
+            </Card>
+          </Grid.Column>
+          <Grid.Column width={11}>
+            <div>
+              <h2>Список постов</h2>
+              {posts
+                ?
+                <Item.Group divided>
+                  {posts.map((postItem) => {
+                    return (
+                      <Item key={postItem.id}>
+                        <Item.Content>
+                          <Item.Header as={Link} to={`/post/${postItem.id}`}>{postItem.title}</Item.Header>
+                          <Item.Description>
+                            {postItem.content}
+                          </Item.Description>
+                          <Item.Extra>
+                            <span className={style.extraItem}><Icon color='green'
+                                                                    name='eye'/>{postItem.viewsCount}</span>
+                            <span className={style.extraItem}><Icon color='green'
+                                                                    name='thumbs up outline'/>{postItem.likesCount}</span>
+                            <span className={style.extraItem}><Icon id={postItem.id} color='red'
+                                                                    name='thumbs down outline'/>{postItem.dislikesCount}</span>
+                          </Item.Extra>
+                        </Item.Content>
+                      </Item>
+                    );
+                  })}
+                </Item.Group>
+                :
+                <span>нет постов</span>
+              }
+            </div>
+          </Grid.Column>
+        </Grid>
         {
           passwordModalShow && <Modal
             content={
@@ -122,7 +158,8 @@ function mapStateToProps(state) {
     data: state.profile.data,
     dataForm: state.profile.dataForm,
     passwordModalShow: state.profile.passwordModalShow,
-    message: state.profile.message
+    message: state.profile.message,
+    posts: state.profile.posts
   };
 }
 

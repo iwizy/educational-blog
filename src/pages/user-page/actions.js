@@ -48,9 +48,21 @@ export const changeUserPasswordAction = (dataForm) => {
       setTimeout(() => {
           dispatch({type: 'USER_PAGE_CHANGE_PASS_MESSAGE_HIDE'});
         }
-        ,5000);
+        , 5000);
     } catch (error) {
       dispatch({type: 'USER_PAGE_CHANGE_PASS_FAIL'});
+    }
+  }
+};
+
+export const getPostsAction = (authorId) => {
+  return async function (dispatch) {
+    try {
+      dispatch({type: 'USER_PAGE_GET_POSTS_REQUEST'});
+      const response = await API.posts.getList({authorId: authorId, offsetStep: 10});
+      dispatch({type: 'USER_PAGE_GET_POSTS_SUCCESS', payload: response.data})
+    } catch (error) {
+      dispatch({type: 'USER_PAGE_GET_POSTS_FAIL'});
     }
   }
 };

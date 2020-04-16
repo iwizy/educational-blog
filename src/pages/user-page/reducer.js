@@ -11,7 +11,8 @@ const initState = {
     header: '',
     content: '',
     isHidden: true
-  }
+  },
+  posts: []
 };
 
 function merge(state, someObject) {
@@ -25,6 +26,11 @@ export default function profileReducer(state = initState, action) {
       return {
         ...state,
         data: action.payload
+      };
+    case 'USER_PAGE_GET_POSTS_SUCCESS':
+      return {
+        ...state,
+        posts: action.payload
       };
     case 'USER_PAGE_CHANGE_DATA_FORM':
       return merge(state, {
