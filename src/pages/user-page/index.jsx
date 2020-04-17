@@ -32,7 +32,7 @@ class Profile extends Component {
 
 
   render() {
-    const {data, passwordModalShow, message, posts} = this.props;
+    const {data, passwordModalShow, message, posts, user, profile} = this.props;
 
     return data && (
       <>
@@ -52,27 +52,28 @@ class Profile extends Component {
               />
               <Card.Content>
                 <Card.Header>{data.firstName} {data.lastName} ({data.login})</Card.Header>
-                <Card.Meta>С нами с <Moment date={data.date} format='DD.MM.YYYY'></Moment></Card.Meta>
+                <Card.Meta>С нами с <Moment date={data.registrationDate} format='DD.MM.YYYY'></Moment></Card.Meta>
                 <Card.Description>
                   <div><Icon name='envelope outline'/> <a href={`mailto:${data.email}`}>{data.email}</a></div>
-                <div><Icon name='key'/> <a onClick={this.changePassword}>изменить пароль</a></div>
+                  {profile.id == user.id ?
+                    <div><Icon name='key'/> <a onClick={this.changePassword}>изменить пароль</a></div> : <div></div>}
 
-              </Card.Description>
-            </Card.Content>
-            <Card.Content extra className={style.cardExtraWrapper}>
-              <a>
-                <Icon name='write'/>
-                {data.postsCount}
-              </a>
-              <a>
-                <Icon color='green' name='thumbs up outline'/>
-                {data.likesCount}
-              </a>
-              <a>
-                <Icon color='red' name='thumbs down outline'/>
-                {data.dislikesCount}
-              </a>
-            </Card.Content>
+                </Card.Description>
+              </Card.Content>
+              <Card.Content extra className={style.cardExtraWrapper}>
+                <a>
+                  <Icon name='write'/>
+                  {data.postsCount}
+                </a>
+                <a>
+                  <Icon color='green' name='thumbs up outline'/>
+                  {data.likesCount}
+                </a>
+                <a>
+                  <Icon color='red' name='thumbs down outline'/>
+                  {data.dislikesCount}
+                </a>
+              </Card.Content>
             </Card>
           </Grid.Column>
           <Grid.Column width={11}>
@@ -90,12 +91,21 @@ class Profile extends Component {
                             {postItem.content}
                           </Item.Description>
                           <Item.Extra>
-                            <span className={style.extraItem}><Icon color='green'
-                                                                    name='eye'/>{postItem.viewsCount}</span>
-                            <span className={style.extraItem}><Icon color='green'
-                                                                    name='thumbs up outline'/>{postItem.likesCount}</span>
-                            <span className={style.extraItem}><Icon id={postItem.id} color='red'
-                                                                    name='thumbs down outline'/>{postItem.dislikesCount}</span>
+                            <span className={style.extraItem}>
+                              <Icon color='green'
+                                    name='eye'
+                              />{postItem.viewsCount}
+                            </span>
+                            <span className={style.extraItem}>
+                              <Icon color='green'
+                                    name='thumbs up outline'
+                              />{postItem.likesCount}
+                            </span>
+                            <span className={style.extraItem}>
+                              <Icon id={postItem.id} color='red'
+                                    name='thumbs down outline'
+                              />{postItem.dislikesCount}
+                            </span>
                           </Item.Extra>
                         </Item.Content>
                       </Item>
@@ -117,26 +127,26 @@ class Profile extends Component {
                     <Segment raised size='small'>
                       <Form size='large'>
                         <div className={style.fieldWrapper}>
-                        <Input
-                          id="currentPassword"
-                          value={this.props.dataForm.currentPassword}
-                          onChange={this.props.changeFieldAction}
-                          placeholder='Текущий пароль'
-                          type='password'
-                          icon='lock'
-                          iconPosition='left'
-                        />
+                          <Input
+                            id="currentPassword"
+                            value={this.props.dataForm.currentPassword}
+                            onChange={this.props.changeFieldAction}
+                            placeholder='Текущий пароль'
+                            type='password'
+                            icon='lock'
+                            iconPosition='left'
+                          />
                         </div>
                         <div className={style.fieldWrapper}>
-                        <Input
-                          id="newPassword"
-                          value={this.props.dataForm.newPassword}
-                          onChange={this.props.changeFieldAction}
-                          placeholder='Новый пароль'
-                          type='password'
-                          icon='lock'
-                          iconPosition='left'
-                        />
+                          <Input
+                            id="newPassword"
+                            value={this.props.dataForm.newPassword}
+                            onChange={this.props.changeFieldAction}
+                            placeholder='Новый пароль'
+                            type='password'
+                            icon='lock'
+                            iconPosition='left'
+                          />
                         </div>
                         <Button onClick={this.onCloseClick}>Закрыть</Button>
                         <Button onClick={this.onChangePasswordClick} primary>Изменить</Button>
@@ -159,7 +169,9 @@ function mapStateToProps(state) {
     dataForm: state.profile.dataForm,
     passwordModalShow: state.profile.passwordModalShow,
     message: state.profile.message,
-    posts: state.profile.posts
+    posts: state.profile.posts,
+    user: state.applicationReducer.user,
+    profile: state.applicationReducer.profile
   };
 }
 
