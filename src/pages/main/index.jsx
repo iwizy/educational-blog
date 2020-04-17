@@ -3,9 +3,10 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import * as Actions from './actions';
 import Title from "src/components/title";
-import {Item, Icon, Header, Dimmer, Loader} from 'semantic-ui-react';
+import {Item, Icon, Header, Dimmer, Loader, Label, Segment, Container, Divider} from 'semantic-ui-react';
 import Info from 'src/components/notify';
 import style from './style.css';
+import Moment from "react-moment";
 
 class Main extends Component {
   componentDidMount() {
@@ -53,24 +54,33 @@ class Main extends Component {
           ? <Item.Group divided>
             {posts.map((postItem) => {
               return (
-                <Item key={postItem.id}>
-                  <Item.Content>
-                    <Item.Header as={Link} to={`/post/${postItem.id}`}>{postItem.title}</Item.Header>
-                    <Item.Description>
-                      {postItem.content}
-                    </Item.Description>
-                    <Item.Extra>
-                      <span className={style.extraItem}>Автор: {postItem.author.login}</span>
-                      <span className={style.extraItem}><Icon color='green' name='eye'/>{postItem.viewsCount}</span>
-                      <span onClick={this.onClickLike} className={style.extraItem}><Icon id={postItem.id}
-                                                                                         color='green'
-                                                                                         name='thumbs up outline'/>{postItem.likesCount}</span>
-                      <span onClick={this.onClickDislike} className={style.extraItem}><Icon id={postItem.id}
-                                                                                            color='red'
-                                                                                            name='thumbs down outline'/>{postItem.dislikesCount}</span>
-                    </Item.Extra>
-                  </Item.Content>
-                </Item>
+                <Segment key={postItem.id}>
+                  <Label as='a' color='green' ribbon='right'>
+                    <Moment date={postItem.date} format='DD.MM.YYYY'></Moment>
+                  </Label>
+                  <Header as='h3' dividing>
+                    <Link to={`/post/${postItem.id}`}>{postItem.title}</Link>
+                  </Header>
+                  <Container fluid>
+                    {postItem.content}
+                  </Container>
+                  <Divider className={style.divider}/>
+
+                  <Label as='a' image>
+                    <img src={`http://school-blog.ru/images/${postItem.author.avatar}`}/>
+                    {postItem.author.login}
+                  </Label>
+                  <Label as='a'>
+                    <Icon name='eye'/> {postItem.viewsCount}
+                  </Label>
+                  <Label as='a' onClick={this.onClickLike} id={postItem.id}>
+                    <Icon name='thumbs up outline' id={postItem.id}/> {postItem.likesCount}
+                  </Label>
+                  <Label as='a' onClick={this.onClickDislike} id={postItem.id}>
+                    <Icon name='thumbs down outline' id={postItem.id}/> {postItem.dislikesCount}
+                  </Label>
+
+                </Segment>
               );
             })}
           </Item.Group>
