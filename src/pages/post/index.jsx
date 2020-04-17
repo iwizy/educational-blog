@@ -54,7 +54,7 @@ class PostPage extends Component {
                 <div>
                   <Divider fitted/>
                   <div className={style.postData}>
-                    <Label as='a' image>
+                    <Label as='a' href={`/user-page/${author.id}`} image>
                       <img src={`http://school-blog.ru/images/${author.avatar}`}/>
                       {author.login}
                     </Label>
