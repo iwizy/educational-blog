@@ -38,6 +38,7 @@ class Main extends Component {
     this.props.increaseDislikeCountAction(id);
   };
 
+
   render() {
     const {posts, message} = this.props;
     return (
@@ -66,10 +67,11 @@ class Main extends Component {
                   </Container>
                   <Divider className={style.divider}/>
 
-                  <Label as='a' image>
+                  <Label as='a' href={`/user-page/${postItem.author.id}`} image>
                     <img src={`http://school-blog.ru/images/${postItem.author.avatar}`}/>
                     {postItem.author.login}
                   </Label>
+
                   <Label as='a'>
                     <Icon name='eye'/> {postItem.viewsCount}
                   </Label>
