@@ -12,6 +12,12 @@ export default function appReducer(state = initState, action) {
         ...state,
         user: action.payload
       };
+
+    case 'USER_PAGE_GET_DATA_SUCCESS':
+      return {
+        ...state,
+        profile: action.payload
+      };
     case 'APPLICATION-SIGN-OUT':
       return {
         ...state,

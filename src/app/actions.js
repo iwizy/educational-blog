@@ -4,7 +4,6 @@ export const auth = () => {
   return async function(dispatch) {
     try {
       const response = await API.user.auth();
-
       dispatch({ type: 'APPLICATION-AUTH', payload: response.data })
     } catch (error) {
 

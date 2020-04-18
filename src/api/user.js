@@ -29,3 +29,28 @@ export function signOut() {
     method: 'GET'
   });
 }
+
+export function checkLogin(login) {
+  return axiosFetch({
+    url: 'users/check-exists/',
+    method: 'POST',
+    data: {
+      login: login
+    }
+  });
+}
+
+export function getUserData(id) {
+  return axiosFetch({
+    url: `users/${id}`,
+    method: 'GET'
+  });
+}
+
+export function changeUserPassword(dataForm) {
+  return axiosFetch({
+    url: 'users/change/password/',
+    method: 'PUT',
+    data: dataForm
+  });
+}

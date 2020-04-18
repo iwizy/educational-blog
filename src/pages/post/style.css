@@ -1,0 +1,16 @@
+.postWrapper {
+  margin: 0 auto 24px;
+}
+
+.postTitle {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.postContent {
+  margin-top: 10px;
+}
+
+.postData {
+  margin-top: 24px;
+}
