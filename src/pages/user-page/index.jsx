@@ -11,7 +11,16 @@ import Moment from 'react-moment';
 import {Link} from "react-router-dom";
 
 class Profile extends Component {
-  componentDidMount() {
+
+  componentDidUpdate(prevProps) {
+    const {match} = this.props;
+    if (match !== prevProps.match) {
+      this.props.getUserDataAction(match.params.id);
+      this.props.getPostsAction(match.params.id);
+    }
+  }
+
+  componentDidMount(prevProps) {
     const {match} = this.props;
     this.props.getUserDataAction(match.params.id);
     this.props.getPostsAction(match.params.id);
